@@ -1,0 +1,16 @@
+
+
+
+nav {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+  background-color: #151515;
+  div {
+    display: flex;
+    flex-direction: row;
+    width: 20%;
+    justify-content: space-around;
+  }
+}
