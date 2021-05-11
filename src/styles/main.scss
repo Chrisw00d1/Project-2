@@ -2,6 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Raleway', sans-serif;
 }
 
 
@@ -34,7 +35,11 @@ nav {
   padding-top: 50px;
   height: 100vh;
 }
-
+input {
+  margin: 0 50px;
+  padding: 5px;
+  font-size: 20px;
+}
 .all-cards {
   display: flex;
   flex-wrap: wrap;
@@ -84,6 +89,7 @@ nav {
     justify-content: space-evenly;
     align-items: center;
     padding-bottom: 20px;
+
     .cardWithStats {
       color: whitesmoke;
       display: flex;
@@ -123,7 +129,7 @@ nav {
   }
   .scores {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 80%;
     justify-content: space-between;
     padding-bottom: 20px;
@@ -131,18 +137,17 @@ nav {
 }
 
 .whoWin {
-  height: 100%;
-  width: 20%;
+  height: 80%;
+  width: 30%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  .whoWin{
-    .winText {
-      .resultText{
-        color: black;
-      }
+  text-align: center;
+  .winText {
+    .resultText{
+      color: black;
     }
-  }
+    }
   .results {
     ul {
       display: flex;
@@ -167,11 +172,12 @@ nav {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-top: 5px;
+        margin: 5px 10px;
       }
     }
   }
 }
+
 
 /* Card flip styling */
 
@@ -200,7 +206,7 @@ nav {
   transform: rotateY(180deg);
 }
 
-.card_details:hover .card_inner_details {
+.is-flipped .card_inner_details {
   transform: rotateY( 180deg ) ;
   transition: transform 0.5s;
 }
@@ -209,32 +215,41 @@ nav {
   position: absolute;
   width: 100%;
   height: 100%;
-  color: black;
   text-align: center;
   font-weight: bold;
   font-size: 40px;
   backface-visibility: hidden;
   border-radius: 0.3em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 
 
 .card_backface {
   transform: rotateY(180deg);
-  background: blue;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .card_frontface {
-  background: grey;
   padding:17px;
-  color:black;
-
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
-
+.card_frontface, .card_backface {
+  color:whitesmoke;
+  background-color: grey;
+}
+  .Marvel {
+    background-color: rgb(181, 2, 2);
+  }
+  .DC {
+    background-color: rgb(14, 14, 14);
+  }
+  .NBC, .Sony, .Rowling, .SyFy, .ABC, .Universal, .George {
+    background-color: rgb(193, 193, 4);
+  }
 
 /*superhero container main,image,details */
 .superhero_container {
@@ -252,7 +267,6 @@ nav {
 .details {
   width: 450px;
   margin-left: 10px;
-  height: 500px;
   max-width: 100%;
   border: 1px solid black;
   background: #0f2027; 
@@ -272,14 +286,19 @@ nav {
 .details > p {
   color:white;
   font-size: 22px;
+  text-align: center;
 }
 
 .superhero_facts {
   background-color: black;
   width: 95%;
+  height: 40%;
   color:white;
   margin-top:10px;
   padding:15px;
+}
+.full_name {
+  color: #FFD700;
 }
 
 .superhero_facts > p,h3 {
@@ -289,4 +308,85 @@ nav {
 h3 {
   color: #FFD700
 }
- 
+
+/* making the containers responsive */
+@media only screen and (max-width: 800px) {
+  .superhero_container {
+    flex-direction: column;
+    margin-top:40px;
+
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  .superhero_container > .details {
+    margin-top:10px;
+  }
+}
+
+.back_stats{
+  background-color: rgba(black, 0.8);
+  color: #FFD700;
+  padding:15px;
+}
+
+small {
+  font-size: 20px;
+}
+
+/* backface card styling */
+
+@media screen and (max-width: 600px) {
+  .all-cards{
+    .card {
+      width: 32%;
+    }
+  }
+}
+
+.remaining, .results, .winText,.instuctions {
+  padding:5px;
+  box-shadow: rgba(209, 154, 154, 0.35) 0px 5px 15px;
+}
+.winText {
+  h3 {
+    font-size: 25px;
+    font-weight: bold;
+  }
+  h4 {
+    font-size: 20px;
+    margin: 5px 0;
+  }
+  button {
+    margin: 10px;
+    padding: 5px;
+    font-size: 20px;
+  }
+}
+
+.gameOver {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content:  center;
+  align-items: center;
+  line-height:32px;
+  h3 {
+    color: black;
+    font-size: 40px;
+    margin: 20px;
+  }
+  p {
+    font-size: 30px;
+    margin: 20px;
+  }
+  button {
+    font-size: 25px;
+    margin: 10px;
+    padding: 5px;
+    
+  }
+}

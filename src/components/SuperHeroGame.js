@@ -70,14 +70,22 @@ function SuperHeroGame() {
     getData()
   }, [])
 
-  console.log(randomCardIndex)
   const handleNewCard = () => {
     if (winner === 'Lose') {
       randomCardIndex.pop()
-      if (randomCardIndex.length === 0) setGameOver(true)
+      if (randomCardIndex.length === 0) {
+        setGameOver(true)
+        if (count > highscore) {
+          localStorage.setItem('highscore', count)
+        }
+      }
       setRandomCardIndex(randomCardIndex)
     } else if (winner === 'Win') {
       setCount(count + 1)
+    }
+    if (winner !== 'Lose' && superHeros[randomCardIndex[randomCardIndex.length - 1]].powerstats[selection] === 100 && randomCardIndex.length !== 0) {
+      randomCardIndex[randomCardIndex.length - 1] = calculateRandomCard(randomCardIndex, superHeros)
+      setRandomCardIndex(randomCardIndex)
     }
     setRandomIndex(calculateRandomCard(randomCardIndex, superHeros))
     setSelection(null)
@@ -85,9 +93,6 @@ function SuperHeroGame() {
   }
 
   const handlePlayAgain = () => {
-    if (count > highscore) {
-      localStorage.setItem('highscore', count)
-    }
     setGameStarted(false)
     setRandomCardIndex(randomIndexes(superHeros.length))
     setSelection(false)
@@ -99,15 +104,20 @@ function SuperHeroGame() {
     <div className='content'>
       {superHeros && cardsAdded ?
         <div className='gameMain'>
-          <h1>Superhero Top Trumps</h1>
           <div className='cardsToCompare'>
             {!gameOver && <div className='playerCard'><PlayerCard {...superHeros[randomCardIndex[randomCardIndex.length - 1]]} setSelection={setSelection} setGameStarted={setGameStarted} selection={selection} /></div>}
 
             <div className='whoWin'>
-              {!gameStarted && <p>Select which stat you think is higher than the other card. You are given three random cards to see how far you can go!</p>}
+              <>
+                {!gameStarted &&
+                  <div className='instuctions'>
+                    <p > Select which stat you think is higher than the other card.<br /><br />You are given three random cards to see how far you can go.<br /> <br />If you select a stat that is 100 your card will be replaced so it isn&apos;t too easy.</p>
+                  </div>}
+              </>
               {selection && !gameOver &&
                 <div className='winText'>
                   <h3 className='resultText'>{winner}</h3>
+                  <hr />
                   <h4>{selection[0].toUpperCase() + selection.slice(1)}</h4>
                   <p>{superHeros[randomCardIndex[randomCardIndex.length - 1]].powerstats[selection]} VS {superHeros[randomIndex].powerstats[selection]}</p>
                   <button onClick={handleNewCard}>Next Card</button>
@@ -135,13 +145,13 @@ function SuperHeroGame() {
         : <>
           { !gameOver && <p>...loading</p>}
           {gameOver && <div className='gameOver'>
-            <h3>Game Over!</h3>
-            <p>Final Score: {count}</p>
-            <button onClick={handlePlayAgain}>Play Again?</button>
+            <h3 className= "animate__animated animate__bounce">Game Over!</h3>
+            <p className= "animate__animated animate__bounce">Final Score: {count}</p>
+            <button onClick={handlePlayAgain} className= "animate__animated animate__bounce">Play Again?</button>
           </div>}
         </>
       }
-    </div>
+    </div >
   )
 
 }
