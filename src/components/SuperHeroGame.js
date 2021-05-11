@@ -2,6 +2,7 @@ import axios from 'axios'
 import React from 'react'
 import ComputerCard from './game/ComputerCard'
 import PlayerCard from './game/PlayerCard'
+import Spinner from './Spinner'
 
 function randomIndexes(length) {
   const array = []
@@ -67,7 +68,7 @@ function SuperHeroGame() {
         console.log(error)
       }
     }
-    getData()
+    setTimeout(getData, 1000)
   }, [])
 
   const handleNewCard = () => {
@@ -143,7 +144,7 @@ function SuperHeroGame() {
           </div>
         </div>
         : <>
-          { !gameOver && <p>...loading</p>}
+          { !gameOver && <Spinner /> }
           {gameOver && <div className='gameOver'>
             <h3 className= "animate__animated animate__bounce">Game Over!</h3>
             <p className= "animate__animated animate__bounce">Final Score: {count}</p>

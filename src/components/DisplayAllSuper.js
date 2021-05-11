@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import SuperHeroCard from './SuperHeroCard'
+import Spinner from './Spinner'
 
 function filterSearch(superheros, search) {
   return (superheros.filter(superhero => {
@@ -20,14 +21,13 @@ function DisplayAllSuper() {
         console.log(err)
       }
     }
-    getData()
+    setTimeout(getData, 1000)
   }, [])
 
   const handleInput = (e) => {
     setSearch(e.target.value)
   }
   
-  // console.log(superheros)
   return (
     <div>
       <div className='content'>
@@ -38,7 +38,7 @@ function DisplayAllSuper() {
               return <SuperHeroCard key={superhero.id} name={superhero.name} image={superhero.images.sm} publisher={superhero.biography.publisher} id={superhero.id} />
             })
           ) : (
-            <p>..loading</p>
+            <Spinner />
           )}
         </div>
       </div>

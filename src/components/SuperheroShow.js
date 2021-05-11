@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
+import Spinner from './Spinner'
 
 
 function SuperheroShow() {
@@ -13,7 +14,7 @@ function SuperheroShow() {
       const { data } = await axios.get(`https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/id/${id}.json`)
       setSuperhero(data)
     }
-    getData()
+    setTimeout(getData, 1000)
   }, [id])
 
   const handleFlip = () => {
@@ -74,7 +75,7 @@ function SuperheroShow() {
         </div>
       ) : (
 
-        <p>...loading</p>
+        <Spinner />
 
       )}
 
