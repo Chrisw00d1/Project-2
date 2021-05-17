@@ -71,7 +71,7 @@ function SuperheroShow() {
             </div>
 
           </div>
-       
+      
         </div>
       ) : (
 
