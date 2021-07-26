@@ -22,6 +22,7 @@
 In pairs we were given 48 hours to create a website of our choice that uses a free API. We found one that had information about superheroes and decided to display the information on cards and do our own version of top trumps.
 
 You can see the end result [here](https://superherocards.netlify.app/)
+
 API Used [here](https://akabab.github.io/superhero-api/api/)
 
 <a name="brief"></a>
