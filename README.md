@@ -68,7 +68,7 @@ return (
     </div>
   )
 ```
-We used react router dom to create links to the other pages. When you click on one of the superhero cards it add the id of the card to the url which is used for the Individual show page.
+We used React Router Dom to create links to the other pages. When you click on one of the superhero cards it add the id of the card to the url which is used for the Individual show page.
 
 ```js
 return (
@@ -86,7 +86,7 @@ return (
 
 ![show](/images/screenshot2.png)
 
-To access the information of a single card we used the id of the card given to us by the url. This was then used in the get request to api. Our main focus for this page was to have an effect where you could flip the superhero card to make it seem more like the Top Trumps game. This was done by creating an on click event on the container of the card the toggles the class ‘is-flipped’ on and off. Depending on if the class is on or off, the front and back of the card rotate 180 deg on the y axis.
+This was the section of the project that Rizwan focused on. To access the information of a single card we used the id of the card given to us by the url. This was then used in the get request to API. Our main focus for this page was to have an effect where you could flip the superhero card to make it seem more like the Top Trumps game. This was done by creating an on click event on the container of the card the toggles the class ‘is-flipped’ on and off. Depending on if the class is on or off, the front and back of the card rotate 180 deg on the y axis.
 
 ```js
 <div className={`card_details ${isFlipped ? 'is-flipped' : ''}`} onClick={handleFlip}>
@@ -123,7 +123,7 @@ To access the information of a single card we used the id of the card given to u
 
 ![game1](/images/screenshot3.png)
 
-I mainly focused on this page while Rizwan focused on the the Individual page. How we decided we wanted the game to work was by giving the user 3 cards to see how far they could get by comparing the stats against random cards. To get user’s cards, I got three random indexes of all the cards and put them in an array. Then I displayed the stats of the card as well as what cards the user had remaining. I then got another random index for the card that the user had to guess against but did a check to make sure that the index hadn’t already been selected so that the user could’t play against a card that they have in their deck.
+I mainly focused on this page for the project. How we decided we wanted the game to work was by giving the user 3 cards to see how far they could get by comparing the stats against random cards. To get user’s cards, I got three random indexes of all the cards and put them in an array. Then I displayed the stats of the card as well as what cards the user had remaining. I then got another random index for the card that the user had to guess against but did a check to make sure that the index hadn’t already been selected so that the user could’t play against a card that they have in their deck.
 
 
 ```js
@@ -168,7 +168,7 @@ if (winner !== 'Lose' && superHeros[randomCardIndex[randomCardIndex.length - 1]]
 
 <a name='wins'></a>
 ## Wins and Challenges
-One of the wins for this project is that we were able to implement our main goals being the game and the card flip. We were able to set ourselves realistic goals for short amount of time we had. We were also very clear if we were changing something that could effect the other person which meant we didn't have any issues of deleting eachothers code.
+One of the wins for this project is that we were able to implement our main goals being the game and the card flip. We were able to set ourselves realistic goals for short amount of time we had. We were also very clear if we were changing something that could effect the other person which meant we didn't have any issues of deleting each others code.
 
 Despite that, one of the challenges was using liveshare throughout all of it. If I was writing code it prevented Rizwan being able to test to see if his code is working and vise versa. I can see the benefits of using it when you are both working on the same issue but when you are working on seperate things it can slow things down. Also getting used to how React works with it's rendering proved a little challenging at times.
 
